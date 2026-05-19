@@ -1,0 +1,27 @@
+$nav-text-color: #333;
+$nav-bg-color: #f8f9fa;
+$nav-hover-bg-color: #e9ecef;
+$nav-hover-text-color: #007bff;
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: $nav-bg-color;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+
+    a {
+        color: $nav-text-color;
+        text-decoration: none;
+        padding: 0 10px;
+
+        &:hover {
+            background-color: $nav-hover-bg-color;
+            color: $nav-hover-text-color;
+            border-radius: 5px;
+        }
+    }
+}
