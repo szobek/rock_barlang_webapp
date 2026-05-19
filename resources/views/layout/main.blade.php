@@ -6,7 +6,7 @@
     <title>@yield('title', 'RockBarlang')</title>
 </head>
 <body>
-    
+    @include('components.navbar')
     <main>@yield('content')</main>
 </body>
 </html>
