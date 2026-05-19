@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Band extends Model
 {
     protected $table = 'bands';
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description', 'formed_year'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function members(): HasMany

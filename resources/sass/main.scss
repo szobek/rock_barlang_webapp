@@ -3,6 +3,10 @@ $nav-bg-color: #f8f9fa;
 $nav-hover-bg-color: #e9ecef;
 $nav-hover-text-color: #007bff;
 
+$band-bg-color: #fff;
+$band-border-color: #2a2e2c;
+$band-border-radius: 15px;
+
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -22,6 +26,35 @@ $nav-hover-text-color: #007bff;
             background-color: $nav-hover-bg-color;
             color: $nav-hover-text-color;
             border-radius: 5px;
+        }
+    }
+}
+
+.band-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .band {
+        width: 300px;
+        margin: 20px;
+        padding: 20px;
+        border: 3px solid $band-border-color;
+        border-radius: $band-border-radius;
+        background-color: $band-bg-color;
+
+        .formed-year {
+            display: block;
+            margin-top: 10px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        h2 {
+            margin-top: 0;
         }
     }
 }

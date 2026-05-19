@@ -29,8 +29,15 @@ class GoogleSheetSeeder extends Seeder
 
         foreach ($egyuttesekSorok as $sor) {
             if (!empty($sor[0])) {
-                // Elmentjük az együttest, ha még nem létezik (kisbetűsítve, ahogy a táblázatban van)
-                Band::firstOrCreate(['name' => trim($sor[0])]);
+                $formedYear = !empty(trim($sor[2])) && is_numeric(trim($sor[2])) ? intval(trim($sor[2])) : null;
+
+                Band::updateOrCreate(
+                    ['name' => trim($sor[0])],
+                    [
+                        'description' => trim($sor[1]),
+                        'formed_year' => $formedYear // Az így megtisztított változót adjuk át
+                    ]
+                );
             }
         }
 
@@ -41,10 +48,10 @@ class GoogleSheetSeeder extends Seeder
 
         foreach ($tagokSorok as $sor) {
             if (!empty($sor[0]) && !empty($sor[1])) {
-                $band = \App\Models\Band::whereRaw('LOWER(name) = ?', [strtolower(trim($sor[1]))])->first();
+                $band = Band::whereRaw('LOWER(name) = ?', [strtolower(trim($sor[1]))])->first();
 
                 if ($band) {
-                    \App\Models\Member::create([
+                    Member::create([
                         'name' => trim($sor[0]),
                         'band_id' => $band->id // Figyelj, hogy itt is az adatbázisod szerinti mezőnév legyen (band_id vagy egyuttes_id)!
                     ]);
@@ -60,7 +67,7 @@ class GoogleSheetSeeder extends Seeder
         foreach ($albumokSorok as $sor) {
             // $sor[0] = album neve, $sor[1] = együttes neve
             if (!empty($sor[0]) && !empty($sor[1])) {
-                $band = \App\Models\Band::whereRaw('LOWER(name) = ?', [strtolower(trim($sor[1]))])->first();
+                $band = Band::whereRaw('LOWER(name) = ?', [strtolower(trim($sor[1]))])->first();
 
                 if ($band) {
                     Album::create([
@@ -79,7 +86,7 @@ class GoogleSheetSeeder extends Seeder
         foreach ($stilusSorok as $sor) {
             // $sor[0] = stílus (pl. rock), $sor[1] = együttes neve
             if (!empty($sor[0]) && !empty($sor[1])) {
-                $band = \App\Models\Band::whereRaw('LOWER(name) = ?', [strtolower(trim($sor[1]))])->first();
+                $band = Band::whereRaw('LOWER(name) = ?', [strtolower(trim($sor[1]))])->first();
 
                 if ($band) {
                     Style::create([

@@ -14,6 +14,8 @@ return new class extends Migration
     Schema::create('bands', function (Blueprint $table) {
         $table->id();
         $table->string('name')->unique(); 
+        $table->text('description')->nullable();
+        $table->integer('formed_year')->nullable();
         $table->timestamps();
     });
 }
