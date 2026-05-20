@@ -1,11 +1,23 @@
+@import 'components/band_card';
+@import 'components/album_card';
+@import 'components/member_card';
+
 $nav-text-color: #333;
 $nav-bg-color: #f8f9fa;
 $nav-hover-bg-color: #e9ecef;
 $nav-hover-text-color: #007bff;
 
-$band-bg-color: #fff;
-$band-border-color: #2a2e2c;
-$band-border-radius: 15px;
+body {
+    background-color: #f8f9fa;
+}
+
+.logo {
+    img {
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+    }
+}
 
 .bottom-nav {
     position: fixed;
@@ -30,82 +42,45 @@ $band-border-radius: 15px;
     }
 }
 
-.band-wrapper {
+.wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
 
-    .band {
-        width: 300px;
-        margin: 20px;
-        padding: 20px;
-        border: 3px solid $band-border-color;
-        border-radius: $band-border-radius;
-        background-color: $band-bg-color;
 
-        .formed-year {
-            display: block;
-            margin-top: 10px;
-            color: #666;
-            font-size: 12px;
-        }
+.album {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border: 3px solid $band-border-color;
+    border-radius: $band-border-radius;
+    background-color: $band-bg-color;
 
-        h2 {
-            margin-top: 0;
-        }
+    .release-year {
+        display: block;
+        margin-top: 10px;
+        color: #666;
+        font-size: 12px;
+    }
+
+    h2 {
+        margin-top: 0;
     }
 }
 
-.album-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
+.member {
+    width: 300px;
+    margin: 20px;
     padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    border: 3px solid $band-border-color;
+    border-radius: $band-border-radius;
+    background-color: $band-bg-color;
 
-    .album {
-        width: 300px;
-        margin: 20px;
-        padding: 20px;
-        border: 3px solid $band-border-color;
-        border-radius: $band-border-radius;
-        background-color: $band-bg-color;
-
-        .release-year {
-            display: block;
-            margin-top: 10px;
-            color: #666;
-            font-size: 12px;
-        }
-
-        h2 {
-            margin-top: 0;
-        }
-    }
-}
-
-.member-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    .member {
-        width: 300px;
-        margin: 20px;
-        padding: 20px;
-        border: 3px solid $band-border-color;
-        border-radius: $band-border-radius;
-        background-color: $band-bg-color;
-
-        h2 {
-            margin-top: 0;
-        }
+    h2 {
+        margin-top: 0;
     }
 }

@@ -35,7 +35,8 @@ class GoogleSheetSeeder extends Seeder
                     ['name' => trim($sor[0])],
                     [
                         'description' => trim($sor[1]),
-                        'formed_year' => $formedYear // Az így megtisztított változót adjuk át
+                        'formed_year' => $formedYear, // Az így megtisztított változót adjuk át
+                        'image_path' => !empty(trim($sor[3])) ? trim($sor[3]) : null
                     ]
                 );
             }
@@ -53,7 +54,8 @@ class GoogleSheetSeeder extends Seeder
                 if ($band) {
                     Member::create([
                         'name' => trim($sor[0]),
-                        'band_id' => $band->id // Figyelj, hogy itt is az adatbázisod szerinti mezőnév legyen (band_id vagy egyuttes_id)!
+                        'band_id' => $band->id,
+                        'role' => !empty(trim($sor[2])) ? trim($sor[2]) : null
                     ]);
                 }
             }
