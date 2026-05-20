@@ -29,7 +29,7 @@
                         <p>Albumok: </p>
                         <ul>
                             @foreach ($band->albums as $album)
-                                <li>{{ $album->name }}</li>
+                                <li>{{ $album->name }} ({{ $album->release_year }})</li>
                             @endforeach
                         </ul>
                     @endif
