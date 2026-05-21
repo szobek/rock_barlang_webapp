@@ -11,7 +11,13 @@ Route::get('bands', function () {
 });
 Route::get('bands/{id}', function ($id) {
     $band = App\Models\Band::with(['members', 'albums', 'styles'])->findOrFail($id);
-    return view('page.band_detail', compact('band'));
+    $styles = $band->styles->toArray();
+    $style_string = '';
+    foreach ($styles as $style) {
+        $style_string .= $style['name'].', ';
+    }
+    $style_string = rtrim($style_string, ', ');
+    return view('page.band_detail', compact('band', 'style_string'));
 })->name('bands.show');
 
 Route::get('albums', function () {

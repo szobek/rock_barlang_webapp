@@ -1,8 +1,11 @@
 @extends('layout.main')
 @section('content')
-    <div class="wrapper wrapper-block band-detail">
+    <div class="wrapper band-detail" style="display: block">
         <h1>{{ $band->name }}</h1>
         <p><small>Alapítva: {{ $band->formed_year }}</small></p>
+        @if ($band->styles)
+            <p><small>Stílusok: {{ $style_string }}</small></p>
+        @endif
         <p>{{ $band->description }}</p>
         @if ($band->members->count()>0)
             <h2>Tagok:</h2>

@@ -1,6 +1,4 @@
-.wrapper-block{
-    display: block;
-}
+
 .band-detail {
     max-width: 800px;
     margin: 0 auto;
@@ -17,5 +15,9 @@
     p {
         color: #666;
         line-height: 1.5;
+    }
+    ul {
+        list-style-type: none;
+        padding-left: 20px;
     }
 }
