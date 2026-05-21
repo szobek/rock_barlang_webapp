@@ -9,6 +9,11 @@ Route::get('bands', function () {
     $bands = App\Models\Band::with(['members', 'albums', 'styles'])->get();
     return view('page.bands', compact('bands'));
 });
+Route::get('bands/{id}', function ($id) {
+    $band = App\Models\Band::with(['members', 'albums', 'styles'])->findOrFail($id);
+    return view('page.band_detail', compact('band'));
+})->name('bands.show');
+
 Route::get('albums', function () {
     $albums = App\Models\Album::with(['band', 'styles'])->get();
     return view('page.albums', compact('albums'));

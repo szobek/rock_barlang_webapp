@@ -1,21 +1,23 @@
-$band-bg-color: #fff ;
+$band-bg-color: #fff;
 $band-border-color: #2a2e2c;
 $band-border-radius: 15px;
-$band-text-color: #2a2e2c;
+$band-text-color: #f4f8f6;
 
 .band {
-
+    text-decoration: none;
     width: 300px;
     margin: 20px;
     padding: 20px;
     border: 3px solid $band-border-color;
     border-radius: $band-border-radius;
     background-color: $band-bg-color;
-    min-height: 250px;
+    min-height: 200px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 
     &:hover {
-        background-color: lighten($band-bg-color, 10%);
-        // width: 310px;
         transform: scale(1.05);
         -webkit-box-shadow: 5px 5px 15px 5px rgba(92, 92, 92, 0.58);
         box-shadow: 5px 5px 15px 5px rgba(92, 92, 92, 0.58);
@@ -32,9 +34,14 @@ $band-text-color: #2a2e2c;
     }
 
     h2 {
-        margin-top: 0;
+        position: absolute;
+        color: $band-text-color;
+        bottom: 10px;
+        left: 20px;
     }
-    .members,.albums {
+
+    .members,
+    .albums {
         list-style: none;
     }
 }
