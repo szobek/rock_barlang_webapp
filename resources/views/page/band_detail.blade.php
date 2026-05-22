@@ -4,7 +4,7 @@
         <h1>{{ $band->name }}</h1>
         <p><small>Alapítva: {{ $band->formed_year }}</small></p>
         @if ($band->styles)
-            <p><small>Stílusok: {{ $style_string }}</small></p>
+            <p><small>Stílusok: {!! $style_string !!}</small></p>
         @endif
         <p>{{ $band->description }}</p>
         @if ($band->members->count()>0)

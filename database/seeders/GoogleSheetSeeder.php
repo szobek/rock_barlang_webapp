@@ -85,14 +85,13 @@ class GoogleSheetSeeder extends Seeder
         }
 
         // 4. STÍLUSOK BEOLVASÁSA 
-        $stilusCsv = Http::withoutVerifying()->get("https://docs.google.com/spreadsheets/d/{$spreadsheetId}/gviz/tq?tqx=out:csv&sheet=stílus")->body();
+        $stilusCsv = Http::withoutVerifying()->get("https://docs.google.com/spreadsheets/d/{$spreadsheetId}/gviz/tq?tqx=out:csv&sheet=stílusok")->body();
         $stilusSorok = array_map('str_getcsv', explode("\n", trim($stilusCsv)));
         array_shift($stilusSorok);
 
         foreach ($stilusSorok as $sor) {
             // $sor[0] = stílus (pl. rock), $sor[1] = együttes neve
-            if (!empty($sor[0]) && !empty($sor[1])) {
-
+            if (!empty($sor[0])) {
                 Style::create([
                     'name' => trim($sor[0]),
                 ]);

@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Band extends Model
 {
@@ -20,8 +21,8 @@ class Band extends Model
         return $this->hasMany(Album::class, 'band_id');
     }
 
-    public function styles(): HasMany
-    {
-        return $this->hasMany(Style::class, 'band_id');
-    }
+    public function styles(): BelongsToMany
+{
+    return $this->belongsToMany(Style::class);
+}
 }
