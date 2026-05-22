@@ -10,6 +10,7 @@ use App\Models\Band;
 use App\Models\Member;
 use App\Models\Style;
 use App\Models\Track;
+use App\Models\BandStyle;
 
 class GoogleSheetSeeder extends Seeder
 {
@@ -83,7 +84,7 @@ class GoogleSheetSeeder extends Seeder
             }
         }
 
-        // 4. STÍLUSOK BEOLVASÁSA ÉS ÖSSZEKÖTÉSE
+        // 4. STÍLUSOK BEOLVASÁSA 
         $stilusCsv = Http::withoutVerifying()->get("https://docs.google.com/spreadsheets/d/{$spreadsheetId}/gviz/tq?tqx=out:csv&sheet=stílus")->body();
         $stilusSorok = array_map('str_getcsv', explode("\n", trim($stilusCsv)));
         array_shift($stilusSorok);
@@ -91,14 +92,10 @@ class GoogleSheetSeeder extends Seeder
         foreach ($stilusSorok as $sor) {
             // $sor[0] = stílus (pl. rock), $sor[1] = együttes neve
             if (!empty($sor[0]) && !empty($sor[1])) {
-                $band = Band::whereRaw('LOWER(name) = ?', [strtolower(trim($sor[1]))])->first();
 
-                if ($band) {
-                    Style::create([
-                        'name' => trim($sor[0]),
-                        'band_id' => $band->id
-                    ]);
-                }
+                Style::create([
+                    'name' => trim($sor[0]),
+                ]);
             }
         }
 
@@ -107,7 +104,7 @@ class GoogleSheetSeeder extends Seeder
         $szamokSorok = array_map('str_getcsv', explode("\n", trim($szamokCsv)));
         array_shift($szamokSorok);
 
-        foreach ($szamokSorok as $sor) {    
+        foreach ($szamokSorok as $sor) {
             if (!empty($sor[0]) && !empty($sor[1])) {
                 $band = Band::whereRaw('LOWER(name) = ?', [strtolower($sor[5])])->first();
                 $album = Album::whereRaw('LOWER(name) = ?', [strtolower($sor[4])])->first();
@@ -123,11 +120,30 @@ class GoogleSheetSeeder extends Seeder
                         'description' => !empty($sor[3]) ? $sor[3] : null
                     ]);
                 } else {
-                    // Ez azt jelenti, hogy a kód lefut a többi sorra is, CSAK nem találja a Band-et vagy az Albumot!
                     echo "Kihagyva (adatbázis hiány): " . $sor[0] . " | Banda: " . $sor[5] . " | Album: " . $sor[4] . "\n";
                 }
             }
         }
 
+        // ********************************************************************************************************************************************************
+
+        //  EGYÜTTESEK ÉS STÍLUSOK ÖSSZEKÖTÉSE
+        $banda_stilusCsv = Http::withoutVerifying()->get("https://docs.google.com/spreadsheets/d/{$spreadsheetId}/gviz/tq?tqx=out:csv&sheet=együttes-stílus")->body();
+        $banda_stilusSorok = array_map('str_getcsv', explode("\n", trim($banda_stilusCsv)));
+        array_shift($banda_stilusSorok);
+
+        foreach ($banda_stilusSorok as $sor) {
+            if (!empty($sor[0]) && !empty($sor[1])) {
+                $band = Band::whereRaw('LOWER(name) = ?', [strtolower(trim($sor[1]))])->first();
+                $style = Style::whereRaw('LOWER(name) = ?', [strtolower(trim($sor[0]))])->first();
+
+                if ($band && $style) {
+                    BandStyle::updateOrCreate(
+                        ['band_id' => $band->id, 'style_id' => $style->id],
+                        []
+                    );
+                }
+            }
+        }
     }
 }

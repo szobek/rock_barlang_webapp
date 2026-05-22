@@ -13,8 +13,7 @@ return new class extends Migration
 {
     Schema::create('styles', function (Blueprint $table) {
         $table->id();
-        $table->string('name'); // Pl. rock, metal, pop
-        $table->foreignId('band_id')->constrained('bands')->onDelete('cascade');
+        $table->string('name'); 
         $table->timestamps();
     });
 }

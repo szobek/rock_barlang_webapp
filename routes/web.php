@@ -9,7 +9,7 @@ Route::get('bands', function () {
     $bands = App\Models\Band::with(['members', 'albums', 'styles'])->get();
     return view('page.bands', compact('bands'));
 });
-Route::get('bands/{id}', function ($id) {
+Route::get('band/{id}', function ($id) {
     $band = App\Models\Band::with(['members', 'albums', 'styles'])->findOrFail($id);
     $styles = $band->styles->toArray();
     $style_string = '';
@@ -18,7 +18,7 @@ Route::get('bands/{id}', function ($id) {
     }
     $style_string = rtrim($style_string, ', ');
     return view('page.band_detail', compact('band', 'style_string'));
-})->name('bands.show');
+})->name('band.show');
 
 Route::get('albums', function () {
     $albums = App\Models\Album::with(['band', 'styles'])->get();

@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Style extends Model
+class BandStyle extends Model
 {
-    
-    protected $fillable = ['name'];
+    protected $fillable = ['band_id', 'style_id'];
     protected $hidden = ['created_at', 'updated_at'];
 }
