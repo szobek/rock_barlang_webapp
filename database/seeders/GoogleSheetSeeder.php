@@ -104,46 +104,21 @@ class GoogleSheetSeeder extends Seeder
 
         // a számok beolvasása és összekötése a bandákkal és albumokkal
         $szamokCsv = Http::withoutVerifying()->get("https://docs.google.com/spreadsheets/d/{$spreadsheetId}/gviz/tq?tqx=out:csv&sheet=zenék")->body();
+        $szamokSorok = array_map('str_getcsv', explode("\n", trim($szamokCsv)));
+        array_shift($szamokSorok);
 
-        // Létrehozunk egy virtuális fájlt a memóriában a CSV szövegből
-        $stream = fopen('php://memory', 'r+');
-        fwrite($stream, $szamokCsv);
-        rewind($stream);
-
-        $isHeader = true;
-
-        // A fgetcsv automatikusan és tökéletesen kezeli a sortöréseket és idézőjeleket!
-        while (($sor = fgetcsv($stream, 0, ",", "\"", "\\")) !== FALSE) {
-            // Első sort (fejlécet) átugorjuk
-            if ($isHeader) {
-                $isHeader = false;
-                continue;
-            }
-
-            // Biztonsági ellenőrzés üres sorokra
-            if (empty($sor) || !isset($sor[0]) || empty(trim($sor[0]))) {
-                continue;
-            }
-
-            // Tisztítás
-            $sor = array_map('trim', $sor);
-
-            // Mivel a fgetcsv-nél előfordulhat, hogy kevesebb oszlop jön vissza, ha a sor vége üres:
-            // Biztosítjuk, hogy legalább 6 elemünk legyen a tömbben (0-tól 5-ig)
-            $sor = array_pad($sor, 6, '');
-
+        foreach ($szamokSorok as $sor) {    
             if (!empty($sor[0]) && !empty($sor[1])) {
                 $band = Band::whereRaw('LOWER(name) = ?', [strtolower($sor[5])])->first();
                 $album = Album::whereRaw('LOWER(name) = ?', [strtolower($sor[4])])->first();
-
+                $duration = !empty($sor[1]) ? $sor[1] : null;
                 if ($band && $album) {
-                    print_r($sor); // Nézzük meg, listázza-e a többit!
 
                     Track::create([
                         'title' => $sor[0],
                         'band_id' => $band->id,
                         'album_id' => $album->id,
-                        'duration' => !empty($sor[1]) && is_numeric($sor[1]) ? intval($sor[1]) : null,
+                        'duration' => $duration,
                         'url' => !empty($sor[2]) ? $sor[2] : null,
                         'description' => !empty($sor[3]) ? $sor[3] : null
                     ]);
@@ -154,6 +129,5 @@ class GoogleSheetSeeder extends Seeder
             }
         }
 
-        fclose($stream);
     }
 }

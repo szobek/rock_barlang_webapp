@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tracks', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('duration')->nullable();
+            $table->string('duration')->nullable();
             $table->string('url')->nullable();
             $table->text('description')->nullable();
 
