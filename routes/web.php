@@ -12,7 +12,7 @@ Route::get('bands', function () {
     return view('page.bands', compact('bands'));
 });
 
-Route::get('band/{id}', [BandDetailController::class, 'show']);
+Route::get('band/{id}', [BandDetailController::class, 'show'])->name('band.show');
 
 
 Route::get('albums', function () {
@@ -29,4 +29,4 @@ Route::get('members', function () {
     return view('page.members', compact('members'));
 });
 
-Route::get('style/{id}', [App\Http\Controllers\BandByStyleController::class, 'show']);
+Route::get('style/{id}', [App\Http\Controllers\BandByStyleController::class, 'show'])->name('style.show');
