@@ -11,10 +11,8 @@ $band-text-color: #f4f8f6;
     background-color: transparent;
     min-height: 200px;
     position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     overflow: hidden;
+    display: block;
     
     &:hover {
         transform: scale(1.05);

@@ -23,6 +23,6 @@ class Band extends Model
 
     public function styles(): BelongsToMany
 {
-    return $this->belongsToMany(Style::class);
+    return $this->belongsToMany(Style::class, 'band_style');
 }
 }

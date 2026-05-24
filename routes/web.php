@@ -21,7 +21,7 @@ Route::get('albums', function () {
 });
 
 Route::get('albums', function () {
-    $albums = App\Models\Album::with(['band', 'styles'])->get();
+    $albums = App\Models\Album::with(['band', 'band.styles'])->get();
     return view('page.albums', compact('albums'));
 });
 Route::get('members', function () {
@@ -30,3 +30,5 @@ Route::get('members', function () {
 });
 
 Route::get('style/{id}', [App\Http\Controllers\BandByStyleController::class, 'show'])->name('style.show');
+Route::get('album/{id}', [App\Http\Controllers\AlbumDetailController::class, 'show'])->name('album.show');
+Route::get('member/{id}', [App\Http\Controllers\MemberDetailController::class, 'show'])->name('member.show');

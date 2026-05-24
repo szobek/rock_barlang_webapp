@@ -11,7 +11,7 @@
             <h2>Tagok:</h2>
             <ul>
                 @foreach ($band->members as $member)
-                    <li>{{ $member->name }} - {{ $member->role }}</li>
+                    <li><a href="{{ route('member.show', $member->id) }}">{{ $member->name }}</a> - {{ $member->role }}</li>
                 @endforeach
             </ul>
             
@@ -21,7 +21,7 @@
             <h2>Albumok:</h2>
             <ul>
                 @foreach ($band->albums as $album)
-                    <li>{{ $album->name }} ({{ $album->release_year }})</li>
+                    <li> <a href="{{ route('album.show', $album->id) }}">{{ $album->name }}</a> ({{ $album->release_year }})</li>
                 @endforeach
             </ul>
             
