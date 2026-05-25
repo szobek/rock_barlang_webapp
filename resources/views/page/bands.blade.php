@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-<x-filter-bar />
+<x-filter-bar :placeholder="'Banda keresése...'" />
     <div class="wrapper flex-container">
 
         @foreach ($bands as $band)

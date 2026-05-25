@@ -1,12 +1,15 @@
 .filter-bar {
     border: 3px solid #ccc;
+    border-left: none;
+    position: fixed;
     width: 100px;
     height: 100px;
     transition: margin-left 0.3s ease;
     margin-left: -150px;
+    border-radius: 10px;
     padding: 10px;
     &.active {
-        margin-left: 0;
+        margin-left: -15px;
     }
     input {
         width: 100%;
@@ -17,7 +20,8 @@
 }
 
 .filter-icon {
-    position: absolute;
+    transition: margin-left 0.3s ease;
+    position: fixed;
     left: 10px;
     top: 100px;
     font-size: 20px;
@@ -32,4 +36,10 @@
 .filter-wrapper {
     position: relative;
     display: inline-block;
+    .close-icon{
+        position: absolute;
+        bottom: 15px;
+        right: 5px;
+        cursor: pointer;
+    }
 }

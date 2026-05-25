@@ -27,10 +27,20 @@ function resetFilters() {
 document.getElementById('search').addEventListener('input', applyFilters);
 
 applyFilters();
+const openFilterBar = ()=>{
+    
+}
 const searchBarIcon = document.querySelector('.filter-icon-js');
+const closeIcon = document.querySelector('.close-icon-js');
+const filterBar = document.querySelector('.filter-bar');
 
 searchBarIcon.addEventListener('click', ()=>{
-    const filterBar = document.querySelector('.filter-bar');
     filterBar.classList.toggle('active');
     searchBarIcon.classList.toggle('active');
+    searchBarIcon.style.visibility = 'hidden';
+});
+closeIcon.addEventListener('click', ()=>{
+    filterBar.classList.remove('active');
+    searchBarIcon.classList.toggle('active');
+    searchBarIcon.style.visibility = 'visible';
 });
