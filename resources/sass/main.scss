@@ -4,6 +4,7 @@
 @use 'band_detail' as band_detail;
 @use 'components/navbar' as navbar;
 @use 'components/upper' as upper;
+@use 'components/top_line' as top-line;
 
 
 @import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -11,6 +12,7 @@
 body {
     background-color: #f8f9fa;
      padding-bottom: 60px;
+     padding-top: 60px;
 }
 
 .logo {
