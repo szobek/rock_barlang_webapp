@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-<x-filter-bar :placeholder="'Album keresése...'" />
+<x-filter :placeholder="'Album keresése...'" />
     <div class="album-wrapper flex-container ">
 
         @foreach ($albums as $album)

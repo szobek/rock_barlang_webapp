@@ -9,6 +9,9 @@ Route::get('/', function () {
 });
 Route::get('bands', function () {
     $bands = App\Models\Band::with(['members', 'albums', 'styles'])->get();
+     $bands->each(function ($band) {
+        $band->style_string = $band->styles->pluck('name')->implode(',');
+    });
     return view('page.bands', compact('bands'));
 });
 
