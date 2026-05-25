@@ -5,6 +5,7 @@
 @use 'components/navbar' as navbar;
 @use 'components/upper' as upper;
 @use 'components/top_line' as top-line;
+@use 'components/filter_bar' as filter-bar;
 
 
 @import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -14,7 +15,9 @@ body {
      padding-bottom: 60px;
      padding-top: 60px;
 }
-
+.hidden-card {
+    display: none;
+}
 .logo {
     img {
         width: 100%;

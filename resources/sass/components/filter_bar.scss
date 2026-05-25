@@ -1,0 +1,35 @@
+.filter-bar {
+    border: 3px solid #ccc;
+    width: 100px;
+    height: 100px;
+    transition: margin-left 0.3s ease;
+    margin-left: -150px;
+    padding: 10px;
+    &.active {
+        margin-left: 0;
+    }
+    input {
+        width: 100%;
+        padding: 5px;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+}
+
+.filter-icon {
+    position: absolute;
+    left: 10px;
+    top: 100px;
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    margin-left: 125px;
+    &.active {
+        margin-left: 0;
+    }
+}
+
+.filter-wrapper {
+    position: relative;
+    display: inline-block;
+}

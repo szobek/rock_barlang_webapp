@@ -1,10 +1,11 @@
 @extends('layout.main')
 
 @section('content')
-    <div class="album-wrapper flex-container">
+<x-filter-bar />
+    <div class="album-wrapper flex-container ">
 
         @foreach ($albums as $album)
-            <div class="album">
+            <div class="album filter-card" data-album-id="{{ $album->id }}" data-name="{{ $album->name }}" data-album-release-year="{{ $album->release_year }}"
                 <a href="{{ route('album.show', $album->id) }}" class=" ">
                     <h2>{{ $album->name }}</h2>
                     <p>
