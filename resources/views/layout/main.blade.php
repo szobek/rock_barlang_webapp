@@ -9,6 +9,7 @@
 </head>
 <body>
     <main>@yield('content')</main>
+    <x-upper />
     @include('components.navbar')
 </body>
 </html>
