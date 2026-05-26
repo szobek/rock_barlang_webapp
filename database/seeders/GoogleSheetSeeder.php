@@ -78,7 +78,8 @@ class GoogleSheetSeeder extends Seeder
                     Album::create([
                         'name' => trim($sor[0]),
                         'band_id' => $band->id,
-                        'release_year' => !empty(trim($sor[2])) && is_numeric(trim($sor[2])) ? intval(trim($sor[2])) : null
+                        'release_year' => !empty(trim($sor[2])) && is_numeric(trim($sor[2])) ? intval(trim($sor[2])) : null,
+                        'image_path' => !empty(trim($sor[3])) ? trim($sor[3]) : null
                     ]);
                 }
             }

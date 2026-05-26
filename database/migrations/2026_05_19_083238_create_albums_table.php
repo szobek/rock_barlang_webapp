@@ -15,6 +15,7 @@ return new class extends Migration
         $table->id();
         $table->string('name');
         $table->foreignId('band_id')->constrained('bands')->onDelete('cascade');
+        $table->text('image_path')->nullable();
         $table->integer('release_year')->nullable();
         $table->timestamps();
     });
