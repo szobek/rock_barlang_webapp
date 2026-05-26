@@ -18,7 +18,7 @@
                     <li>Nincsenek számok ehhez az albumhoz.</li>
                 @else
                     @foreach ($album->tracks as $track)
-                        <li>{{ $track->title }} ({{ $track->duration }})</li>
+                        <li>{{ $track->title }} ({{ $track->duration }}) @if ($track->url) | <a href="{{ $track->url }}" target="_blank">Hallgatás</a> @endif</li>
                     @endforeach
                 @endif
             </ul>
