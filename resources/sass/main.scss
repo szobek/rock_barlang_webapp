@@ -10,7 +10,6 @@
 @use 'album_detail' as album_detail;
 
 @import '@fortawesome/fontawesome-free/css/all.min.css';
-// index.js vagy App.jsx
 @import 'bootstrap/dist/css/bootstrap.min.css';
 body {
     background-color: variable.$body-bg-color;
