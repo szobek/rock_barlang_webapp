@@ -2,6 +2,7 @@
 @section('content')
     <div class="wrapper band-detail" style="display: block">
         <h1>{{ $band->name }}</h1>
+        <img src="{{ $band->image_path }}" alt="{{ $band->name }} képe" class="band-image">
         <p><small>Alapítva: {{ $band->formed_year }}</small></p>
         @if ($band->styles)
             <p><small>Stílusok: {!! $style_string !!}</small></p>
