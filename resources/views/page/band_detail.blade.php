@@ -8,24 +8,30 @@
             <p><small>Stílusok: {!! $style_string !!}</small></p>
         @endif
         <p>{{ $band->description }}</p>
-        @if ($band->members->count()>0)
-            <h2>Tagok:</h2>
-            <ul>
-                @foreach ($band->members as $member)
-                    <li><a href="{{ route('member.show', $member->id) }}">{{ $member->name }}</a> - {{ $member->role }}</li>
-                @endforeach
-            </ul>
-            
+        @if ($band->members->count() > 0)
+            <div class="band-members">
+
+                <h2>Tagok:</h2>
+                <ul>
+                    @foreach ($band->members as $member)
+                        <li><a href="{{ route('member.show', $member->id) }}">{{ $member->name }}</a> - {{ $member->role }}</li>
+                    @endforeach
+                </ul>
+            </div>
+
         @endif
 
-        @if ($band->albums->count()>0)
-            <h2>Albumok:</h2>
-            <ul>
-                @foreach ($band->albums as $album)
-                    <li> <a href="{{ route('album.show', $album->id) }}">{{ $album->name }}</a> ({{ $album->release_year }})</li>
-                @endforeach
-            </ul>
-            
+        @if ($band->albums->count() > 0)
+            <div class="band-albums">
+                <h2>Albumok:</h2>
+                <ul>
+                    @foreach ($band->albums as $album)
+                        <li> <a href="{{ route('album.show', $album->id) }}">{{ $album->name }}</a> ({{ $album->release_year }})
+                        </li>
+                    @endforeach
+                </ul>
+
+            </div>
         @endif
     </div>
 @endsection

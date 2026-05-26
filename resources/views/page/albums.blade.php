@@ -5,7 +5,7 @@
     <div class="album-wrapper flex-container ">
 
         @foreach ($albums as $album)
-            <x-album :album="$album" />
+            <x-album-card :album="$album" />
         @endforeach
     </div>
 @endsection

@@ -6,14 +6,18 @@
 @use 'components/upper' as upper;
 @use 'components/top_line' as top-line;
 @use 'components/filter_bar' as filter-bar;
-
+@use 'variable' as variable;
+@use 'album_detail' as album_detail;
 
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 
 body {
-    background-color: #f8f9fa;
+    background-color: variable.$body-bg-color;
      padding-bottom: 60px;
      padding-top: 60px;
+}
+i {
+    color: #fff;
 }
 .hidden-card {
     display: none;
@@ -36,32 +40,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-
-
-
-
-
-
-
-.album {
-    width: 300px;
-    margin: 20px;
-    padding: 20px;
-    border: 3px solid band_card.$band-border-color;
-    border-radius: band_card.$band-border-radius;
-
-    .release-year {
-        display: block;
-        margin-top: 10px;
-        color: #666;
-        font-size: 12px;
-    }
-
-    h2 {
-        margin-top: 0;
-    }
 }
 
 .member {

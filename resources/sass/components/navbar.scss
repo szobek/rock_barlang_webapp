@@ -1,7 +1,7 @@
-$nav-text-color: #333;
-$nav-bg-color: #f8f9fa;
-$nav-hover-bg-color: #e9ecef;
-$nav-hover-text-color: #007bff;
+$nav-text-color: #fff;
+$nav-bg-color: #2B2B2B;
+$nav-hover-bg-color: #4A4A48;
+$nav-hover-text-color: #e5e9ee;
 
 .bottom-nav {
     position: fixed;
@@ -11,7 +11,6 @@ $nav-hover-text-color: #007bff;
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
-    border-top: 1px solid #ddd;
 
     a {
         color: $nav-text-color;

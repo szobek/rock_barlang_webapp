@@ -1,8 +1,9 @@
+$upper-border-color: #4A4A48;
 .upper {
   height: 30px;
   width: 30px;
-  border-top: 3px solid #333;   
-  border-right: 3px solid #333; 
+  border-top: 3px solid $upper-border-color;   
+  border-right: 3px solid $upper-border-color; 
   position: fixed;
   bottom: 130px;
   right: 20px;

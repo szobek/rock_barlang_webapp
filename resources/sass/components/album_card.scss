@@ -1,0 +1,25 @@
+@use 'band_card';
+
+h2 {
+    color: #fff;
+}
+
+.album {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border: 3px solid band_card.$band-border-color;
+    border-radius: band_card.$band-border-radius;
+    background-color: band_card.$band-bg-color;
+
+    .release-year {
+        display: block;
+        margin-top: 10px;
+        color: #666;
+        font-size: 12px;
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+}
