@@ -14,7 +14,7 @@
     </div>
     @if ($album->band)
     <div class="album-band">
-        <a href="{{ route('band.show', $album->band->id) }}">{{ $album->band->name }}</a>
+        {{ $album->band->name }}
     </div>
     @endif
 </div>
