@@ -12,10 +12,11 @@
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 body {
-    background-color: variable.$body-bg-color;
      padding-bottom: 60px;
      padding-top: 60px;
-     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgb(139, 41, 41));
+     background-image: linear-gradient(variable.$body-bg-color, rgb(139, 41, 41));
+     background-repeat: no-repeat;
+     height: 100vh;
 }
 i {
     color: #fff;
