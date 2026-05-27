@@ -1,4 +1,5 @@
 import './album-card';
+import './band-card';
 document.querySelector('.upper-js').addEventListener('click', () => {
     window.scrollTo({
         top: 0,
@@ -17,11 +18,8 @@ function applyFilters() {
 
     cardArr.forEach(card => {
         const nameMatch = card.dataset.name.toLowerCase().includes(search);
-        const styles = card.dataset.style.split(',').map(s => s.trim());
+        const styles =card.dataset.style ? card.dataset.style.split(',').map(s => s.trim()):[];
         const styleMatch = styleSelect === '' || styles.includes(styleSelect);
-        console.log(styleSelect);
-        
-
         card.classList.toggle('hidden-card', !(nameMatch && styleMatch));
     });
 }
