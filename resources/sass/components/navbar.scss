@@ -13,6 +13,9 @@ $nav-hover-text-color: #e5e9ee;
     padding: 10px 0;
 
     a {
+        i{
+            color: $nav-text-color;
+        }
         color: $nav-text-color;
         text-decoration: none;
         height: 45px;
@@ -23,6 +26,11 @@ $nav-hover-text-color: #e5e9ee;
         cursor: pointer;
         width: 100%;
         justify-content: center;
+        border-left: 1px solid $nav-text-color;
+
+         &:first-child {
+            border-left: none;
+        }
         i {
             margin-right: 10px;
         }
