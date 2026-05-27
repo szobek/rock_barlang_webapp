@@ -1,1 +1,1 @@
-<div class="top-line">RockBarlang</div>
+<div class="top-line"><a href="/">RockBarlang</a></div>
