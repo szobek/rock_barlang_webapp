@@ -58,7 +58,8 @@ class GoogleSheetSeeder extends Seeder
                     Member::create([
                         'name' => trim($sor[0]),
                         'band_id' => $band->id,
-                        'role' => !empty(trim($sor[2])) ? trim($sor[2]) : null
+                        'role' => !empty(trim($sor[2])) ? trim($sor[2]) : null,
+                        'image_path' => !empty(trim($sor[3])) ? trim($sor[3]) : null
                     ]);
                 }
             }
