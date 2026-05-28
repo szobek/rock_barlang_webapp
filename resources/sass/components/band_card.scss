@@ -14,7 +14,7 @@ $band-bg-color: #2a2e2c;
     position: relative;
     overflow: hidden;
     display: block;
-    
+
     &:hover {
         transform: scale(1.05);
         -webkit-box-shadow: 5px 5px 15px 5px rgba(92, 92, 92, 0.58);
@@ -29,6 +29,9 @@ $band-bg-color: #2a2e2c;
         color: $band-text-color;
         bottom: 10px;
         left: 20px;
+        font-family: "Rock Salt", cursive;
+        font-weight: 400;
+        font-style: normal;
     }
 
 }
