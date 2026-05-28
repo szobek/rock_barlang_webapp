@@ -16,6 +16,9 @@ h2 {
     background-size: contain;
     position: relative;
     cursor: pointer;
+    font-family: "Rock Salt", cursive;
+    font-weight: 400;
+    font-style: normal;
 
     
     h2 a {
@@ -35,7 +38,11 @@ h2 {
 
     h2 {
         margin-top: 0;
+        color:#2d2828;
         position: relative;
+        text-shadow: 1px 7px 3px rgb(248, 248, 248);
+        border-radius: 5px;
+        padding: 15px;
     }
     .album-band {
         position: absolute;
